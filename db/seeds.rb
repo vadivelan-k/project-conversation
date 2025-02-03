@@ -9,6 +9,7 @@
 #   end
 
 DEFAULT_DESCRIPTION = "Project description goes here " * 5
+DEFAULT_PASSWORD = 'password'
 
 (1..15).each do |number|
   project = Project.find_or_initialize_by(title: "Project - #{number}")
@@ -16,3 +17,7 @@ DEFAULT_DESCRIPTION = "Project description goes here " * 5
   project.assign_attributes(description: DEFAULT_DESCRIPTION, status: 'draft')
   project.save
 end
+
+user = User.find_or_initialize_by(email: 'admin@gmail.com')
+user.assign_attributes(password: DEFAULT_PASSWORD, password_confirmation: DEFAULT_PASSWORD)
+user.save
