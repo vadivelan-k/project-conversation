@@ -1,0 +1,16 @@
+<h1>Project Title: <%= @project.title %></h1>
+<h3>Project Status: <%= @project.status %></h3>
+<h3>Project Description: <%= @project.description %></h3>
+
+<h1>Comments:</h1>
+<% comments = @project.comments %>
+<% if comments.length > 0 %>
+  <% comments.each do |comment| %>
+    <h4><%= comment.description %></h4>
+    <h4>Status changed to: <%= comment.project_status %></h4>
+    <h4>Added by: <%= comment.user.display_name %></h4>
+  <% end %>
+<% else %>
+  No comments were added to this project.
+<% end %>
+
