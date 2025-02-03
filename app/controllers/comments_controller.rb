@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    comment = Comment.new(permitted_params[:comment])
+    comment = current_user.comments.build(permitted_params[:comment])
 
     if comment.save
       redirect_to project_path(comment.project)

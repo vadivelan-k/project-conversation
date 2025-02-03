@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :check_project_availability, only: [:show]
   def index
     @projects = Project.all
