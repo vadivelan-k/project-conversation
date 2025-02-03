@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <% if !params[:controller].starts_with?('devise') %>
+      <%= render "application/user_session" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
