@@ -21,3 +21,4 @@ end
 user = User.find_or_initialize_by(email: 'admin@gmail.com')
 user.assign_attributes(password: DEFAULT_PASSWORD, password_confirmation: DEFAULT_PASSWORD)
 user.save
+puts "User created with email: #{user.email} and password: #{DEFAULT_PASSWORD}"
