@@ -8,9 +8,19 @@
   <% comments.each do |comment| %>
     <h4><%= comment.description %></h4>
     <h4>Status changed to: <%= comment.project_status %></h4>
-    <h4>Added by: <%= comment.user.display_name %></h4>
+    <h4>Added by: <%= comment.user&.display_name %></h4>
+    <hr />
   <% end %>
 <% else %>
   No comments were added to this project.
 <% end %>
 
+<h3>Add new comment</h3>
+<%= form_for(@project.comments.build) do |f| %>
+  <%= f.hidden_field :project_id %>
+  <%= f.text_area :description %>
+  <%= f.select :project_status, Project::STATUSES.map { |status| [status.capitalize, status] } %>
+
+
+  <%= f.submit %>
+<% end %>
